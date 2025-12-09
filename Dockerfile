@@ -27,9 +27,6 @@ RUN mkdir -p /app/data && \
 # Switch to non-root user (node user comes with official Node images)
 USER node
 
-# Expose port (if needed for health checks)
-EXPOSE 3000
-
 # Start the bot using dumb-init for proper signal handling
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "src/index.js"]
