@@ -1,19 +1,21 @@
 FROM node:lts-alpine
 
-# Update system packages to fix vulnerabilities and install security patches
+# Update system packages and install build dependencies for native modules
 RUN apk update && \
     apk upgrade --no-cache -a && \
-    apk add --no-cache dumb-init && \
-    rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+    apk add --no-cache \
+    dumb-init \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 WORKDIR /app
-
-# Use the built-in node user for security (comes with official Node images)
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies (better-sqlite3 needs build tools during installation)
 RUN npm ci --omit=dev
 
 # Copy application files
