@@ -80,8 +80,8 @@ export async function handleButton(interaction) {
     return;
   }
 
-  if (interaction.customId === 'admin_boards_page_1' || interaction.customId === 'admin_boards_page_2') {
-    const page = interaction.customId === 'admin_boards_page_1' ? 1 : 2;
+  if (interaction.customId.startsWith('admin_boards_page_')) {
+    const page = parseInt(interaction.customId.replace('admin_boards_page_', ''));
     const boards = Board.getAll();
     const startIdx = (page - 1) * 5;
     const pageBoards = boards.slice(startIdx, startIdx + 5);

@@ -67,7 +67,17 @@ if (boardCount.count === 0) {
     ['Board 07', 'Board number 7'],
     ['Board 08', 'Board number 8'],
     ['Board 09', 'Board number 9'],
-    ['Board 10', 'Board number 10']
+    ['Board 10', 'Board number 10'],
+    ['USB Debugger 1', 'USB Debugger 1'],
+    ['USB Debugger 2', 'USB Debugger 2'],
+    ['USB Debugger 3', 'USB Debugger 3'],
+    ['USB Debugger 4', 'USB Debugger 4'],
+    ['Design Phase Board 1', 'Design Phase Board 1'],
+    ['Design Phase Board 2', 'Design Phase Board 2'],
+    ['Design Phase Board 3', 'Design Phase Board 3'],
+    ['Attack Phase Board 1', 'Attack Phase Board 1'],
+    ['Attack Phase Board 2', 'Attack Phase Board 2'],
+    ['Attack Phase Board 3', 'Attack Phase Board 3']
   ];
   
   const insertMany = db.transaction((boards) => {
@@ -77,7 +87,7 @@ if (boardCount.count === 0) {
   });
   
   insertMany(boards);
-  console.log('Initialized 10 default boards');
+  console.log('Initialized 20 default boards');
 }
 
 export default db;
